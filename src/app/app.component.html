@@ -3,8 +3,8 @@
   <div class="row">
     <h3>Structural - ngIf</h3>
     <div class="col-md-12">
-      <button class="btn btn-success" (click)="approve(true)">Approve</button>
-      <button class="btn btn-danger" (click)="approve(false)">Reject</button>
+      <button class="btn btn-success sts" (click)="approve(true)">Approve</button>
+      <button class="btn btn-danger sts" (click)="approve(false)">Reject</button>
     </div>
     <div class="col-md-12">
       <p *ngIf="isApproved">Your application has been approved</p>
@@ -15,8 +15,8 @@
   <div class="row">
     <h3>Structural - ngFor</h3>
     <div class="col-md-12">
-      <p *ngFor="let number of numbers; let i = index">
-        {{i+1}} - {{number}}
+      <p *ngFor="let item of selectionList; let i = index">
+        {{i+1}} - {{item}}
       </p>
     </div>
   </div>
@@ -27,11 +27,58 @@
       <input type="text" name="luckyNumber" [(ngModel)]="luckyNumber">
     </div>
     <div class="col-md-12" [ngSwitch]="luckyNumber">
-      <p *ngSwitchCase="1">{{numbers[0]}}</p>
-      <p *ngSwitchCase="2">hope</p>
-      <p *ngSwitchCase="3">pla</p>
+      <p *ngSwitchCase="1">{{selectionList[0]}}</p>
+      <p *ngSwitchCase="2">{{selectionList[1]}}</p>
+      <p *ngSwitchCase="3">{{selectionList[2]}}</p>
       <p *ngSwitchDefault>Enter btw 1-3</p>
-
     </div>
   </div>
+  <hr>
+  <h2 class="m-4">Task</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="row">
+        <div class="col-md-12 message" *ngIf="chosenNumber > 1">
+          Numbers highlighted above are divisible by {{chosenNumber}}
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-success" (click)="calculateDivisibleBy(2)"
+          [ngClass]="{'active-btn': chosenNumber === 2}">
+          Numbers divisible by 2
+        </button>
+      </div>
+      <div>
+        <button class="btn btn-success" (click)="calculateDivisibleBy(3)"
+          [ngClass]="{'active-btn': chosenNumber === 3}">
+          Numbers divisible by 3
+        </button>
+      </div>
+      <div>
+        <button class="btn btn-success" (click)="calculateDivisibleBy(5)"
+          [ngClass]="{'active-btn': chosenNumber === 5}">
+          Numbers divisible by 5
+        </button>
+      </div>
+      <div>
+        <button class="btn btn-success" (click)="calculateDivisibleBy(10)"
+          [ngClass]="{'active-btn': chosenNumber === 10}">
+          Numbers divisible by 10
+        </button>
+      </div>
+      <div>
+        <button class="btn btn-danger" [disabled]="isClearDisabled" (click)="calculateDivisibleBy(1)">
+          Clear
+        </button>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <p class="divP" *ngFor="let num of numbersList"
+        [ngClass]="{highlight: num%chosenNumber === 0 && chosenNumber > 1}"
+        [ngStyle]="{'font-size': (num%chosenNumber === 0 && chosenNumber > 1) ? '30px' : '24px'}">
+        {{num}}
+      </p>
+    </div>
+  </div>
+
 </div>
