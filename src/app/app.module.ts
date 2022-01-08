@@ -9,6 +9,7 @@ import { TaskComponent } from './components/task/task.component';
 import { FamilyComponent } from './components/family/family.component';
 import { NavComponent } from './components/header/nav/nav.component';
 import { AppRoutingModule } from './app-routing.module';
+import { TitleComponent } from './components/header/title/title.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
     ChildComponent,
     TaskComponent,
     FamilyComponent,
-    NavComponent
+    NavComponent,
+    TitleComponent
   ],
   imports: [
     BrowserModule,
