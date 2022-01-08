@@ -4,9 +4,7 @@
     <button class="categories" (click)="filterBy('animal')">Animals</button>
 </div>
 <div class="output">
-    <p>{{isAnySelected}}</p>
-    <span *ngIf="isAnySelected">Selected item is array of objects is not working</span>
-    <!-- <span *ngIf="isAnySelected">Selected item is {{ selectedItem?.name }}</span> -->
+    <span *ngIf="isAnySelected">Selected item is {{ selectedItem?.name }}</span>
 </div>
 <hr />
 <app-child [items]="filteredItems" (selectedItemEmitter)="selectItem($event)"></app-child>

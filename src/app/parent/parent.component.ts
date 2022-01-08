@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from '../Item';
 
 @Component({
   selector: 'app-parent',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./parent.component.css']
 })
 export class ParentComponent implements OnInit {
-  filteredItems: any[] = [];
+  filteredItems: Item[] = [];
   items = [
     {type:'animal',name:'Dog'},
     {type:'color',name:'Green'},
@@ -21,7 +22,7 @@ export class ParentComponent implements OnInit {
     {type:'fruit',name:'Cherry'},
     {type:'color',name:'orange'},
   ];
-  selectedItem = {};
+  selectedItem!:Item;
   isAnySelected = false;
 
     ngOnInit() {
@@ -30,8 +31,7 @@ export class ParentComponent implements OnInit {
     }
 
   filterBy(type:String){
-    this.filteredItems = [...this.items.filter(el => el.type === type)]
-    console.log('n parent',this.filteredItems)
+    this.filteredItems = this.items.filter(el => el.type === type)
     this.isAnySelected = false
     return this.filteredItems;
   }

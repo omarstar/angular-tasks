@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Item } from 'src/app/Item';
 
 @Component({
   selector: 'app-child',
@@ -7,7 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ChildComponent implements OnInit {
   @Input()
-  items:any[] = []
+  items: Item[] = []
   
   @Output()
   selectedItemEmitter = new EventEmitter();
@@ -15,7 +16,6 @@ export class ChildComponent implements OnInit {
   constructor() {}
   
   ngOnInit(): void {
-    console.log('in child', this.items)
   }
 
   selectItem(item:Object){
