@@ -1,5 +1,6 @@
 <div class="child-container">
     <div class="item" *ngFor="let el of items" (click)="selectItem(el)">
         {{el.name}}
+        <a [routerLink]="['/task1',el.name]" routerLinkActive="router-link-active">details</a>
     </div>
 </div>
