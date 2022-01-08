@@ -1,0 +1,10 @@
+<div class="btn-container">
+    <button class="categories" (click)="filterBy('color')">Colors</button>
+    <button class="categories" (click)="filterBy('fruit')">Fruits</button>
+    <button class="categories" (click)="filterBy('animal')">Animals</button>
+</div>
+<div class="output">
+    <span *ngIf="isAnySelected">Selected item is {{ selectedItem?.name }}</span>
+</div>
+<hr />
+<app-child [items]="filteredItems" (selectedItemEmitter)="selectItem($event)"></app-child>
