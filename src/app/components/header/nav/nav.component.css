@@ -1,0 +1,19 @@
+header {
+  padding: 30px;
+  background-color: darkolivegreen;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+a {
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: done;
+}
+
+a.active {
+  color: aqua;
+}
