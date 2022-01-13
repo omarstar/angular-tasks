@@ -1,1 +1,12 @@
-<p>title works! need more layout design : &backsim; {{paramsValue}}</p>
+<div class="container border border-success">
+    <div class="bg-primary w-5 p-2" *ngIf="!isLoading">
+        <p>title works! need more layout design : &backsim; {{paramsValue}}</p>
+    </div>
+    <div class="bg-warning p-4 w-50 mw-100">
+        <div class="users" *ngFor="let user of users">
+            <img [src]="user.avatar_url" alt="" width="100px" />
+            <div>{{user.login}}</div>
+        </div>
+    </div>
+    <div class="loading bg-danger mt-5" *ngIf="isLoading">loading ... </div>
+</div>
