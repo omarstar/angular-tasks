@@ -1,7 +1,10 @@
 <header>
+    <div class="logo" (click)="goToHome()">logo title</div>
     <nav>
-        <a routerLink="/home" routerLinkActive="active">HOME</a>
-        <a routerLink="/task1" routerLinkActive="active">TASK1</a>
-        <a routerLink="/task2" routerLinkActive="active">TASK2</a>
+        <div *ngFor="let path of pathRoutes | keyvalue">
+            <a [routerLink]="path.value" routerLinkActive="active">{{path.key}}</a>
+
+        </div>
     </nav>
+    <div class="logout" (click)="logout()">Logout</div>
 </header>
