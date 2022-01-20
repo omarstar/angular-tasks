@@ -1,10 +1,10 @@
 <header>
     <div class="logo" (click)="goToHome()">logo title</div>
-    <nav>
+    <nav *ngIf="isLoggedIn$ | async as isLoggedIn">
         <div *ngFor="let path of pathRoutes | keyvalue">
             <a [routerLink]="path.value" routerLinkActive="active">{{path.key}}</a>
 
         </div>
+        <div *ngIf="isLoggedIn" class="logout" (click)="logout()">Logout</div>
     </nav>
-    <div class="logout" (click)="logout()">Logout</div>
 </header>

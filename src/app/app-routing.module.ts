@@ -9,7 +9,7 @@ import { TaskComponent } from "./components/task/task.component";
 import { ParentComponent } from "./parent/parent.component";
 
 const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full'}, 
+    { path: '', redirectTo: 'login', pathMatch: 'full'}, 
     {path: 'home', component: FamilyComponent},
     {path: 'task1', component: ParentComponent},
     {path: 'task2', component: TaskComponent},
@@ -17,7 +17,7 @@ const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'main', component: MainComponent},
     {path: 'movie', component: MovieComponent},
-    {path: '**', redirectTo: 'home'},
+    {path: '**', redirectTo: 'login'},
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
