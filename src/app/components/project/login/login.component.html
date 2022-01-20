@@ -9,7 +9,7 @@
         entertainment fan looking for a recommendation, or to share an opinion,
         you’ve come to the right place.
     </div>
-    <div class="login-form">
+    <!-- <div class="login-form">
         <div class="form-group">
             <label for="uname">Username </label>
             <input type="text" name="uname" [(ngModel)]="username">
@@ -22,5 +22,43 @@
             <div class="error">{{errorMsg}}</div>
             <button class="btn btn-dark" (click)="loginValidation()">Login</button>
         </div>
-    </div>
+    </div> -->
+    <hr />
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()" class="login-form">
+        <div class="form-group">
+            <label for="fName">first name </label>
+            <input type="text" name='fname' placeholder="enter name" formControlName="fName">
+
+            <label for="lName">last name</label>
+            <input type="text" name='lName' formControlName="lName">
+        </div>
+        <p style="color: red;" *ngIf="user && (user?.fname?.touched && user?.fname?.invalid)">{{user?.fname?.status}}
+            only letters accepted</p>
+        <p *ngIf="user && user?.lname?.touched && user?.lname?.invalid">invalid field</p>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" formControlName="email">
+
+            <label for="pword">Password</label>
+            <input type="password" name="pword" formControlName="pword">
+        </div>
+        <span style="color: red;" *ngIf="user && (user?.email?.touched && user?.email?.invalid)">wrong email
+            format</span>
+        <span style="color: red;" *ngIf="user && (user?.pword?.touched && user?.pword?.invalid)">short password</span>
+
+        <div formGroupName="address" class="form-group">
+            <h2>address</h2>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" formControlName="city">
+            </div>
+            <div class="form-group">
+                <label for="street">Street</label>
+                <input type="text" formControlName="street">
+            </div>
+        </div>
+        <button [disabled]="!loginForm.valid">submit</button>
+        <button (click)="updateProfile()">Update Profile</button>
+    </form>
 </div>
