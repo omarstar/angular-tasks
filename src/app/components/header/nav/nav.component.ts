@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,12 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  isLoggedIn$!: Observable<boolean>;
+
+  constructor(private router: Router, private auth: AuthService) {  }
 
   ngOnInit(): void {
+    this.isLoggedIn$ = this.auth.isLoggedIn;
   }
 
-  routePathHome = 'home';
-  routePathTask1 = 'task1';
-  routePathTask2 = 'task2';
+  pathRoutes = {
+    HOME : '/home',
+    TASK1 : '/task1',
+    TASK2 : '/task2',
+    PROJECT : '/main',
+  }
+
+  goToHome() {
+    this.router.navigate(['home'])
+  }
+  logout() {
+    this.auth.logout();
+  }
 }

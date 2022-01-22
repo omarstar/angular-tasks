@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -11,6 +11,9 @@ import { FamilyComponent } from './components/family/family.component';
 import { NavComponent } from './components/header/nav/nav.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TitleComponent } from './components/header/title/title.component';
+import { LoginComponent } from './components/project/login/login.component';
+import { MovieComponent } from './components/project/movie/movie.component';
+import { MainComponent } from './components/project/main/main.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +23,17 @@ import { TitleComponent } from './components/header/title/title.component';
     TaskComponent,
     FamilyComponent,
     NavComponent,
-    TitleComponent
+    TitleComponent,
+    LoginComponent,
+    MovieComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
